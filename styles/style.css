@@ -313,7 +313,7 @@ body {
 .taskList__tasksInfo {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;
   cursor: pointer;
 }
 .taskList__listItem {
@@ -334,4 +334,24 @@ body {
   color: var(--color-blue);
   font-weight: var(--font-weight);
   transition: color ease-in-out var(--timing-animation);
+}
+
+@media (max-width: 768px) {
+  .taskList__text {
+    font-size: 1.8rem;
+  }
+  .taskList__info {
+    justify-content: space-between;
+    padding: 2rem 0;
+    font-size: 1.2rem;
+  }
+  .taskList__tasksInfo {
+    gap: 1.1rem;
+  }
+  .taskList__clearCompleted {
+    padding-right: 1.5rem;
+  }
+  .taskList__items {
+    padding-left: 1.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */

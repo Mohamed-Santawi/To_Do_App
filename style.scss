@@ -281,7 +281,7 @@ body {
     border-bottom: 1px solid var(--color-border);
     font-size: var(--font-size);
     font-family: var(--font-family);
-    cursor: grab; 
+    cursor: grab;
     &--isActive {
       .taskList__text {
         color: var(--color-text-isActive);
@@ -318,9 +318,10 @@ body {
   &__tasksInfo {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     cursor: pointer;
   }
+
   &__listItem {
     transition: color ease-in-out var(--timing-animation);
     &:hover:not(:first-child) {
@@ -330,6 +331,7 @@ body {
   &__clearCompleted {
     cursor: pointer;
     transition: color ease-in-out var(--timing-animation);
+
     &:hover {
       color: var(--color-neutral-3);
     }
@@ -339,4 +341,26 @@ body {
   color: var(--color-blue);
   font-weight: var(--font-weight);
   transition: color ease-in-out var(--timing-animation);
+}
+
+@media (max-width: 768px) {
+  .taskList {
+    &__text {
+      font-size: 1.8rem;
+    }
+    &__info {
+      justify-content: space-between;
+      padding: 2rem 0;
+      font-size: 1.2rem;
+    }
+    &__tasksInfo {
+      gap: 1.1rem;
+    }
+    &__clearCompleted {
+      padding-right: 1.5rem;
+    }
+    &__items {
+      padding-left: 1.5rem;
+    }
+  }
 }

@@ -11,7 +11,7 @@ import {
   tasksCount,
   getTaskItems,
 } from './elements.js';
-import { initTaskListeners } from './eventListeners';
+import { initTaskListeners } from './eventListeners.js';
 // import { loadedCompletedTasks } from './utils';
 export const fetchData = (key) => {
   const data = localStorage.getItem(key);

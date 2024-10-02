@@ -1,0 +1,342 @@
+@import 'https://unpkg.com/open-props';
+
+// // /* Global Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables */
+:root {
+  --timing-animation: 0.3s;
+  --font-family: 'Josefin Sans', sans-serif;
+  --default-padding: 1.6rem;
+  --font-size: 1.8rem;
+  --border-raduis: 0.6rem;
+  --font-weight: 600;
+  /* Light Theme Colors */
+  --color-white: #fff;
+  --color-text-1--light: hsl(235, 21%, 11%);
+  --color-text-2--light: hsl(235, 24%, 19%);
+  --color-bkg--light: white;
+  --color-bkg-1--light: hsl(236, 33%, 92%);
+  --color-bkg-2--light: hsl(234, 39%, 85%);
+  --color-neutral-1--light: hsl(234, 11%, 52%);
+  --color-neutral-2--light: hsl(233, 14%, 35%);
+  --color-neutral-3--light: hsl(237, 14%, 26%);
+  --color-blue--light: hsl(220, 98%, 61%);
+  --color-gradient--light: linear-gradient(
+    135deg,
+    hsl(192, 100%, 67%) 0%,
+    hsl(280, 87%, 65%) 100%
+  );
+
+  /* Dark Theme Colors */
+  --color-bkg--dark: black;
+  --color-bkg-1--dark: hsl(235, 21%, 11%);
+  --color-bkg-2--dark: hsl(235, 24%, 19%);
+  --color-text-1--dark: hsl(236, 33%, 92%);
+  --color-text-2--dark: hsl(234, 39%, 85%);
+  --color-neutral-1--dark: hsl(234, 11%, 52%);
+  --color-neutral-2--dark: hsl(233, 14%, 35%);
+  --color-neutral-3--dark: hsl(237, 14%, 26%);
+  --color-blue--dark: hsl(220, 98%, 61%);
+  --color-gradient--dark: linear-gradient(
+    135deg,
+    hsl(192, 100%, 67%) 0%,
+    hsl(280, 87%, 65%) 100%
+  );
+
+  /* Basic Light Colors */
+  --color-header: var(--color-white);
+  --color-text-1: var(--color-text-1--light);
+  --color-placeholder: var(--color-neutral-1--light);
+  --color-text-input: var(--color-text-2--light);
+  --color-border: var(--color-bkg-1--light);
+  --color-bkg-1: var(--color-bkg-1--light);
+  --color-input-bkg: var(--color-white);
+  --color-text-isActive: var(--color-bkg-2--light);
+  --color-neutral-1: var(--color-neutral-1--light);
+  --color-neutral-2: var(--color-neutral-2--light);
+  --color-neutral-3: var(--color-neutral-3--light);
+  --color-blue: var(--color-blue--light);
+  --color-gradient: var(--color-gradient--light);
+}
+
+/* Dark Theme (Manual Toggle) */
+[data-theme='dark'] {
+  --color-header: var(--color-white);
+  --color-input-bkg: var(--color-bkg-2--dark);
+  --color-placeholder: var(--color-neutral-2--dark);
+  --color-text-input: var(--color-text-2--dark);
+  --color-border: var(--color-neutral-3--dark);
+  --color-text-1: var(--color-text-1--dark);
+  --color-text-2: var(--color-text-2--dark);
+  --color-text-isActive: var(--color-neutral-1--dark);
+  --color-bkg: var(--color-bkg--dark);
+  --color-bkg-1: var(--color-bkg-1--dark);
+  --color-bkg-2: var(--color-bkg-2--dark);
+  --color-neutral-1: var(--color-neutral-1--dark);
+  --color-neutral-2: var(--color-neutral-2--dark);
+  --color-neutral-3: var(--color-neutral-3--dark);
+  --color-blue: var(--color-blue--dark);
+  --color-gradient: var(--color-gradient--dark);
+  color-scheme: dark;
+}
+
+/* Light Theme (Manual Toggle) */
+[data-theme='light'] {
+  --color-header: var(--color-white);
+  --color-input-bkg: var(--color-white);
+  --color-placeholder: var(--color-neutral-1--light);
+  --color-text-input: var(--color-text-2--light);
+  --color-border: var(--color-bkg-1--light);
+  --color-text-isActive: var(--color-bkg-2--light);
+  --color-text-1: var(--color-text-1--light);
+  --color-text-2: var(--color-text-2--light);
+  --color-bkg: var(--color-bkg--light);
+  --color-bkg-1: var(--color-bkg-1--light);
+  --color-bkg-2: var(--color-bkg-2--light);
+  --color-neutral-1: var(--color-neutral-1--light);
+  --color-neutral-2: var(--color-neutral-2--light);
+  --color-neutral-3: var(--color-neutral-3--light);
+  --color-blue: var(--color-blue--light);
+  --color-gradient: var(--color-gradient--light);
+  color-scheme: light;
+}
+
+/* Body */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-neutral-3);
+  background-color: var(--color-bkg);
+  transition:
+    background ease-in-out var(--timing-animation),
+    color var(--timing-animation) ease-in-out;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-header);
+}
+
+.header__title {
+  letter-spacing: 1rem;
+}
+
+.header__themeToggle {
+  cursor: pointer;
+}
+
+/* Theme Toggle Visibility */
+[data-theme='light'] .header__themeToggleDark {
+  display: none;
+}
+
+[data-theme='dark'] .header__themeToggleLight {
+  display: none;
+}
+
+/* App Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  background-color: var(--color-bkg-1);
+  z-index: 1;
+  position: relative;
+  transition: var(--timing-animation);
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 35rem;
+  z-index: -1;
+}
+[data-theme='light'] .background__img {
+  content: url(../assets/bg-desktop-light.jpg);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-theme='dark'] .background__img {
+  content: url(../assets/bg-desktop-dark.jpg);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-6);
+  flex: 1;
+  max-width: 70rem;
+  width: 100%;
+  margin: 10rem auto 0;
+  padding: var(--default-padding);
+}
+
+/* Task Search Styles */
+.taskSearch {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.taskSearch__check {
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskSearch__checkMark {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskSearch__checkMark::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color-gradient);
+  opacity: 0;
+  transition: opacity var(--timing-animation) ease-in-out;
+}
+// .checkMarkList:checked + .taskSearch__checkMark::before {
+//   opacity: 1;
+// }
+.taskSearch__checkMark:hover::before {
+  opacity: 1;
+}
+.taskSearch__checkMarkImg {
+  // z-index: 1;
+  display: none;
+}
+.taskSearch__form {
+  display: flex;
+  height: 7rem;
+  border-radius: var(--border-raduis);
+  flex-grow: 1;
+  cursor: text;
+  overflow: hidden;
+  background-color: var(--color-input-bkg);
+}
+
+.taskSearch__input {
+  font-family: var(--font-family);
+  min-width: 4.8rem;
+  background-color: transparent;
+  flex-grow: 1;
+  border: 0;
+  color: var(--color-text-input);
+  outline: none;
+  padding: 1rem 0;
+  font-size: var(--font-size);
+}
+
+.taskSearch__input::placeholder {
+  font-family: var(--font-family);
+  color: var(--color-placeholder);
+}
+
+.task__wrapper {
+  background-color: var(--color-input-bkg);
+  margin-top: 4rem;
+  border-radius: var(--border-raduis);
+  box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.4);
+}
+.taskList {
+  display: flex;
+  flex-direction: column;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    cursor: grab; 
+    &--isActive {
+      .taskList__text {
+        color: var(--color-text-isActive);
+        text-decoration: line-through;
+      }
+      .taskSearch__checkMark::before {
+        opacity: 1;
+      }
+      .taskSearch__checkMarkImg {
+        z-index: 1;
+        display: block;
+      }
+    }
+  }
+  &__text {
+    width: 100%;
+    padding: 0 1rem;
+    font-size: 2.2rem;
+    color: var(--color-text-input);
+  }
+  &__xmark {
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  &__info {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0;
+    font-family: var(--font-family);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight);
+    color: var(--color-neutral-1);
+  }
+  &__tasksInfo {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    cursor: pointer;
+  }
+  &__listItem {
+    transition: color ease-in-out var(--timing-animation);
+    &:hover:not(:first-child) {
+      color: var(--color-neutral-3);
+    }
+  }
+  &__clearCompleted {
+    cursor: pointer;
+    transition: color ease-in-out var(--timing-animation);
+    &:hover {
+      color: var(--color-neutral-3);
+    }
+  }
+}
+.active {
+  color: var(--color-blue);
+  font-weight: var(--font-weight);
+  transition: color ease-in-out var(--timing-animation);
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>ToDoApp</title>
+  </head>
+  <body>
+    <main class="app">
+      <div class="background">
+        <img
+          src="./assets/bg-desktop-light.jpg"
+          alt=""
+          class="background__img"
+        />
+      </div>
+      <div class="container">
+        <header class="header">
+          <h1 class="header__title">TODO</h1>
+          <div class="header__themeToggle">
+            <span class="header__themeToggleLight">
+              <img
+                src="./assets/icon-moon.svg"
+                alt=""
+                class="header__themeToggleImg"
+              />
+            </span>
+            <span class="header__themeToggleDark">
+              <img
+                src="./assets/icon-sun.svg"
+                alt=""
+                class="header__themeToggleImg"
+              />
+            </span>
+          </div>
+        </header>
+        <div class="taskSearch">
+          <form action="" class="taskSearch__form">
+            <div class="taskSearch__check">
+              <div
+                class="taskSearch__checkMark"
+                tabindex="0"
+                role="button"
+              ></div>
+            </div>
+            <input
+              type="text"
+              class="taskSearch__input"
+              placeholder="Create a new todo"
+              required
+            />
+          </form>
+        </div>
+        <div class="task__wrapper">
+          <ul class="taskList">
+         
+
+          </ul>
+          <div class="taskList__info">
+            <p class="taskList__items">items left</p>
+            <div class="taskList__tasksInfo">
+              <span class="taskList__listItem allList active">All</span>
+              <span class="taskList__listItem activeList">Active</span>
+              <span class="taskList__listItem completedList">Completed</span>
+            </div>
+            <span class="taskList__clearCompleted">Clear Completed</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
